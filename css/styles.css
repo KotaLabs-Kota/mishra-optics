@@ -863,33 +863,40 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
 .newsletter__form.is-done .newsletter__success { display: flex; }
 
 
-/* ---------- footer credit ---------- */
-.footer__credit {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  background: linear-gradient(135deg, #101b2a, #16263a);
+/* ---------- KotaLabs brand card ---------- */
+.kotalabs-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a, #16263a 55%, #0d1524);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--r-md);
-  padding: 0.9rem 1.1rem;
+  border-radius: var(--r-lg);
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
   margin-bottom: 1.1rem;
   color: #dbe6f2;
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-.footer__credit:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-.footer__credit-mark {
-  width: 40px; height: 40px; flex: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.2));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.kotalabs-card::before {
+  content: "";
+  position: absolute;
+  width: 320px; height: 320px;
+  right: -140px; top: -180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 65%);
+  pointer-events: none;
+}
+.kotalabs-card__head { position: relative; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.kotalabs-mark {
+  width: 44px; height: 44px; flex: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(59, 130, 246, 0.22));
+  border: 1px solid rgba(255, 255, 255, 0.16);
   display: grid; place-items: center;
-  font-size: 0.78rem; font-weight: 800; letter-spacing: -0.02em;
+  font-size: 0.9rem; font-weight: 800; letter-spacing: -0.03em;
   color: #fff;
 }
-.footer__credit-mark span { color: #38bdf8; }
-.footer__credit strong { display: block; font-size: 0.8rem; font-weight: 700; color: #f1f5f9; }
-.footer__credit small { display: block; font-size: 0.66rem; color: #94a3b8; margin-top: 0.1rem; }
-.footer__credit-link {
+.kotalabs-mark span { color: #38bdf8; }
+.kotalabs-card__title strong { display: block; font-size: 0.86rem; font-weight: 700; color: #f1f5f9; }
+.kotalabs-card__title small { display: block; font-size: 0.68rem; color: #94a3b8; margin-top: 0.1rem; }
+.kotalabs-card__site {
   margin-left: auto;
   display: inline-flex; align-items: center; gap: 0.35rem;
   font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
@@ -900,8 +907,64 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
   white-space: nowrap;
   transition: background 0.25s, color 0.25s;
 }
-.footer__credit:hover .footer__credit-link { background: #f8fafc; color: #0f172a; }
-.footer__credit-link .icon { width: 12px; height: 12px; }
+.kotalabs-card__site:hover { background: #f8fafc; color: #0f172a; }
+.kotalabs-card__site .icon { width: 12px; height: 12px; }
+.kotalabs-card__pitch { position: relative; margin-top: 0.8rem; font-size: 0.78rem; line-height: 1.6; color: #94a3b8; max-width: 78ch; }
+.kotalabs-plans { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-top: 1rem; }
+.kotalabs-plan {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.kotalabs-plan--free {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.kotalabs-plan--free:hover { background: rgba(56, 189, 248, 0.16); border-color: rgba(56, 189, 248, 0.7); transform: translateY(-2px); }
+.kotalabs-plan__badge {
+  align-self: flex-start;
+  font-size: 0.5rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+  margin-bottom: 0.15rem;
+}
+.kotalabs-plan strong { font-size: 0.78rem; font-weight: 700; color: #f1f5f9; }
+.kotalabs-plan small { font-size: 0.64rem; color: #94a3b8; line-height: 1.4; }
+.kotalabs-plan__note { font-size: 0.58rem; color: #64748b; margin-top: 0.2rem; }
+.kotalabs-plan__cta {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  margin-top: 0.35rem;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #e0f2fe;
+}
+.kotalabs-plan__cta .icon { width: 11px; height: 11px; }
+.kotalabs-card__foot {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap;
+  margin-top: 0.9rem; padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.68rem; color: #94a3b8;
+}
+.kotalabs-card__foot a { color: #e2e8f0; text-decoration: underline; text-underline-offset: 3px; }
+.kotalabs-card__foot a:hover { color: #38bdf8; }
+.kotalabs-card__cta {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #0f172a;
+  background: #f8fafc;
+  border-radius: 999px;
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.kotalabs-card__cta:hover { background: #38bdf8; color: #0f172a; }
+.kotalabs-card__cta .icon { width: 12px; height: 12px; }
 
 /* ---------- footer ---------- */
 .site-footer { background: var(--ink); color: #cfc9bb; margin-top: clamp(2rem, 4vw, 3rem); }
@@ -1459,8 +1522,9 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
   .journal-grid .post-card:last-child { display: block; }
   .search-results { grid-template-columns: 1fr 1fr; }
   .footer__main { grid-template-columns: 1fr; gap: 2rem; }
-  .footer__credit { flex-wrap: wrap; }
-  .footer__credit-link { margin-left: 0; }
+  .kotalabs-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kotalabs-card__site { margin-left: 0; }
+  .kotalabs-card__foot { flex-direction: column; align-items: flex-start; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
   .form-grid { grid-template-columns: 1fr; }
   .stores-grid { grid-template-columns: 1fr; }
@@ -1476,9 +1540,6 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
   .shop-toolbar__right { width: 100%; justify-content: space-between; }
   .sort-select { flex: 1; }
   .pdp__delivery { gap: 0.4rem; }
-  .buy-row { flex-wrap: wrap; }
-  .buy-row .btn { min-width: 100%; order: 3; }
-  .buy-row .wish-btn { margin-left: auto; }
   .testi-product { display: none; }
   .announce { font-size: 0.58rem; letter-spacing: 0.1em; height: 32px; }
   .brand__mark { width: 32px; height: 32px; }

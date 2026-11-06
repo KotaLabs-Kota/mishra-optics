@@ -165,58 +165,6 @@ const PRODUCTS = [
       "Includes a hard case, microfibre pouch and lens cloth"
     ]
   },
-  {
-    id: "meera",
-    name: "The Meera",
-    category: "eyeglasses",
-    shape: "Browline",
-    price: 2690,
-    compareAt: null,
-    image: "images/product-meera.jpg",
-    badge: "Bestseller",
-    rating: 4.9,
-    reviews: 187,
-    material: "Acetate & metal",
-    size: "Medium · 50–20–145",
-    colors: [
-      { name: "Brown / Gold", hex: "#6b4a2f" },
-      { name: "Black / Gold", hex: "#20241f" }
-    ],
-    description:
-      "A browline that borrows from mid-century libraries and gives them a modern, lighter touch. Intellectual, but never stiff.",
-    details: [
-      "Acetate browline with gold-tone metal rim",
-      "Demo lenses with 100% UV400 protection",
-      "Adjustable nose pads",
-      "Includes a hard case, microfibre pouch and lens cloth"
-    ]
-  },
-  {
-    id: "zephyr",
-    name: "The Zephyr",
-    category: "sunglasses",
-    shape: "Wrap",
-    price: 3190,
-    compareAt: null,
-    image: "images/product-zephyr.jpg",
-    badge: "Sport",
-    rating: 4.7,
-    reviews: 88,
-    material: "Grilamid TR-90",
-    size: "Wide · 60–15–130",
-    colors: [
-      { name: "Matte Black / Orange", hex: "#2b2b28" },
-      { name: "Crystal / Grey", hex: "#b9c2c4" }
-    ],
-    description:
-      "A performance wrap for early runs and long rides. Grilamid TR-90 keeps it flexible, the mirrored orange lens keeps the glare out.",
-    details: [
-      "Flexible Grilamid TR-90 frame",
-      "Mirrored polycarbonate lenses, UV400",
-      "Rubber nose grip and temple tips",
-      "Includes a hard case, microfibre pouch and lens cloth"
-    ]
-  }
 ];
 
 const LENS_OPTIONS = [
@@ -240,8 +188,8 @@ const FACE_SHAPES = {
     product: "nilgiri"
   },
   Heart: {
-    tip: "Browline and aviator styles balance a wider forehead.",
-    product: "meera"
+    tip: "Aviator styles balance a wider forehead beautifully.",
+    product: "udaipur"
   }
 };
 
@@ -281,7 +229,7 @@ const JOURNAL = [
     tag: "Care",
     title: "Five habits that quietly ruin your lenses",
     excerpt: "Your shirt is not a lens cloth. Here's the small routine that keeps acetate and coatings like new.",
-    image: "images/product-meera.jpg",
+    image: "images/product-thar.jpg",
     read: "3 min read"
   },
   {
@@ -313,7 +261,7 @@ const STORES = [
 const FAQS = [
   {
     q: "Do I need a prescription to order?",
-    a: "You can order frames with non-prescription demo lenses straight away. If you'd like prescription lenses, add your details at checkout or email your prescription to care@mishraoptics.in and we'll take it from there."
+    a: "You can order frames with non-prescription demo lenses straight away. If you'd like prescription lenses, send your prescription to care@mishraoptics.in or share it with us on WhatsApp and we'll take it from there."
   },
   {
     q: "How do I know my frame size?",

@@ -25,17 +25,22 @@
     }
   };
 
-  let cart = store.get("mo_cart", []);
   let wishlist = store.get("mo_wish", []);
-  if (!Array.isArray(cart)) cart = [];
   if (!Array.isArray(wishlist)) wishlist = [];
 
   const getProduct = (id) => PRODUCTS.find((p) => p.id === id);
   const lensExtra = (lensId) => (LENS_OPTIONS.find((l) => l.id === lensId) || LENS_OPTIONS[0]).extra;
-  const linePrice = (item) => (getProduct(item.id)?.price || 0) + lensExtra(item.lens);
-  const cartCount = () => cart.reduce((n, i) => n + i.qty, 0);
-  const cartSubtotal = () => cart.reduce((sum, i) => sum + linePrice(i) * i.qty, 0);
-  const FREE_SHIP = 1999;
+  const waProductLink = (p, extra = "") => {
+    const productUrl = new URL(`product.html?id=${p.id}`, window.location.href).href;
+    const text = [
+      `Hello ${BUSINESS.name}, I'm interested in ${p.name} (${p.shape} ${p.category}) — ${money(p.price)}.`,
+      extra,
+      "",
+      "Please share availability and next steps.",
+      productUrl
+    ].filter(Boolean).join("\n");
+    return `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(text)}`;
+  };
 
   /* ---------------- global shell (drawers, search, toast) ---------------- */
   function mountShell() {
@@ -43,15 +48,6 @@
     const shell = document.createElement("div");
     shell.innerHTML = `
       <div class="overlay" id="siteOverlay" data-close-all></div>
-
-      <aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
-        <div class="drawer__head">
-          <h2>Your bag <span class="muted" id="cartDrawerCount" style="font-family:var(--sans);font-size:.8rem"></span></h2>
-          <button class="icon-btn" data-close-all aria-label="Close bag">${icon("close")}</button>
-        </div>
-        <div class="drawer__body" id="cartBody"></div>
-        <div class="drawer__foot" id="cartFoot"></div>
-      </aside>
 
       <aside class="drawer" id="wishDrawer" aria-label="Saved frames" aria-hidden="true">
         <div class="drawer__head">
@@ -166,7 +162,7 @@
           <a href="product.html?id=${p.id}" aria-label="View ${esc(p.name)}">
             <img src="${p.image}" alt="${esc(p.name)} — ${esc(p.shape)} ${esc(p.category)}" loading="lazy" width="600" height="720">
           </a>
-          <button class="quick-add" data-quick-add="${p.id}">${icon("plus")} Quick add</button>
+          <a class="quick-add" href="${waProductLink(p)}" target="_blank" rel="noopener" aria-label="Enquire about ${esc(p.name)} on WhatsApp">${icon("whatsapp")} Enquire on WhatsApp</a>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -188,7 +184,7 @@
   function renderHomeProducts() {
     const el = $("#homeProducts");
     if (!el) return;
-    const featured = ["aravalli", "udaipur", "jaipur", "meera"].map(getProduct).filter(Boolean);
+    const featured = ["aravalli", "udaipur", "jaipur", "nilgiri"].map(getProduct).filter(Boolean);
     el.innerHTML = featured.map(productCard).join("");
     observeReveals();
   }
@@ -243,7 +239,7 @@
             <div class="cart-item__variant">${esc(p.shape)} · ${esc(p.material)}</div>
             <div class="cart-item__price">${money(p.price)}</div>
             <div class="cart-item__controls">
-              <button class="btn btn-outline btn-sm" data-wish-add="${p.id}">Add to bag</button>
+              <a class="btn btn-whatsapp btn-sm" href="${waProductLink(p)}" target="_blank" rel="noopener">${icon("whatsapp")} Enquire</a>
             </div>
           </div>
           <button class="cart-item__remove" data-wish-remove="${p.id}" aria-label="Remove ${esc(p.name)}">${icon("trash")}</button>
@@ -251,110 +247,7 @@
     }).join("");
   }
 
-  /* ---------------- cart ---------------- */
-  function addToCart(id, options = {}) {
-    const p = getProduct(id);
-    if (!p) return;
-    const item = {
-      id,
-      color: options.color || p.colors[0].name,
-      size: options.size || p.size.split("·")[0].trim(),
-      lens: options.lens || "single",
-      qty: Math.max(1, Number(options.qty) || 1)
-    };
-    const key = [item.id, item.color, item.size, item.lens].join("|");
-    const existing = cart.find((c) => [c.id, c.color, c.size, c.lens].join("|") === key);
-    if (existing) existing.qty += item.qty;
-    else cart.push(item);
-    store.set("mo_cart", cart);
-    renderCart();
-    updateCounts();
-  }
-  function updateQty(key, delta) {
-    const item = cart.find((c) => [c.id, c.color, c.size, c.lens].join("|") === key);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) cart = cart.filter((c) => c !== item);
-    store.set("mo_cart", cart);
-    renderCart();
-    updateCounts();
-  }
-  function removeLine(key) {
-    cart = cart.filter((c) => [c.id, c.color, c.size, c.lens].join("|") !== key);
-    store.set("mo_cart", cart);
-    renderCart();
-    updateCounts();
-  }
-  function renderCart() {
-    const body = $("#cartBody");
-    const foot = $("#cartFoot");
-    if (!body || !foot) return;
-    const count = cartCount();
-    const subtotal = cartSubtotal();
-    const shipping = subtotal === 0 || subtotal >= FREE_SHIP ? 0 : 149;
-    const remaining = Math.max(0, FREE_SHIP - subtotal);
-    const progress = Math.min(100, (subtotal / FREE_SHIP) * 100);
-
-    if (!cart.length) {
-      body.innerHTML = `
-        <div class="cart-empty">
-          <div class="empty-icon">${icon("bag")}</div>
-          <h3>Your bag is empty</h3>
-          <p>Good frames are waiting. Start with the bestsellers.</p>
-          <a href="shop.html" class="btn btn-primary btn-sm" style="margin-top:1.2rem" data-close-all>Shop all frames</a>
-        </div>`;
-      foot.innerHTML = "";
-      const dc = $("#cartDrawerCount");
-      if (dc) dc.textContent = "";
-      return;
-    }
-
-    body.innerHTML = `
-      <div class="ship-meter">
-        <p>${remaining > 0 ? `You're <strong>${money(remaining)}</strong> away from complimentary shipping` : `<strong>Complimentary shipping unlocked</strong> — nice choice.`}</p>
-        <div class="ship-meter__track"><div class="ship-meter__fill" style="width:${progress}%"></div></div>
-      </div>
-      ${cart.map((item) => {
-        const p = getProduct(item.id);
-        if (!p) return "";
-        const key = [item.id, item.color, item.size, item.lens].join("|");
-        const lens = LENS_OPTIONS.find((l) => l.id === item.lens) || LENS_OPTIONS[0];
-        return `
-          <div class="cart-item">
-            <img class="cart-item__img" src="${p.image}" alt="${esc(p.name)}" loading="lazy">
-            <div>
-              <a class="cart-item__name" href="product.html?id=${p.id}" data-close-all>${esc(p.name)}</a>
-              <div class="cart-item__variant">${esc(item.color)} · ${esc(item.size)} · ${esc(lens.label)}</div>
-              <div class="cart-item__price">${money(linePrice(item))}</div>
-              <div class="cart-item__controls">
-                <div class="qty">
-                  <button data-cart-minus="${key}" aria-label="Decrease quantity">${icon("minus")}</button>
-                  <span>${item.qty}</span>
-                  <button data-cart-plus="${key}" aria-label="Increase quantity">${icon("plus")}</button>
-                </div>
-              </div>
-            </div>
-            <button class="cart-item__remove" data-cart-remove="${key}" aria-label="Remove ${esc(p.name)}">${icon("trash")}</button>
-          </div>`;
-      }).join("")}
-    `;
-    foot.innerHTML = `
-      <div class="cart-row"><span>Subtotal · ${count} item${count > 1 ? "s" : ""}</span><strong>${money(subtotal)}</strong></div>
-      <div class="cart-row"><span>Shipping</span><strong>${shipping === 0 ? "Complimentary" : money(shipping)}</strong></div>
-      <div class="cart-row cart-row--total"><span>Total</span><strong>${money(subtotal + shipping)}</strong></div>
-      <button class="btn btn-primary btn-block cart-checkout" data-checkout>Checkout securely ${icon("arrow-right")}</button>
-      <p class="cart-note">Taxes included · 30-day returns · Secure demo checkout</p>
-      <button class="cart-continue" data-close-all>Continue shopping</button>
-    `;
-    const dc = $("#cartDrawerCount");
-    if (dc) dc.textContent = `(${count})`;
-  }
   function updateCounts() {
-    const count = cartCount();
-    $$("[data-cart-count]").forEach((el) => {
-      el.textContent = count;
-      el.hidden = count === 0;
-    });
     $$("[data-wish-count]").forEach((el) => {
       el.textContent = wishlist.length;
       el.hidden = wishlist.length === 0;
@@ -551,11 +444,10 @@
     document.title = `${p.name} — Mishra Optics`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", `${p.name}: ${p.description}`);
-    pdpState = { color: p.colors[0].name, size: p.size.split("·")[0].trim(), lens: "single", qty: 1, product: p };
+    pdpState = { color: p.colors[0].name, size: p.size.split("·")[0].trim(), lens: "single", product: p };
 
     const badge = p.badge ? `<span class="pdp__badge">${icon(p.badge === "Sale" ? "sparkle" : "award")} ${esc(p.badge)}</span>` : "";
     const compare = p.compareAt ? `<s>${money(p.compareAt)}</s><span>Save ${money(p.compareAt - p.price)}</span>` : "";
-    const discount = p.compareAt ? `<span>Save ${money(p.compareAt - p.price)}</span>` : "";
 
     root.innerHTML = `
       <div class="container pdp">
@@ -594,7 +486,7 @@
               <button class="size-btn" data-size="Size guide">Size guide</button>
             </div>
             <div class="pdp__divider"></div>
-            <div class="option-label">Lens type <span>Choose at checkout</span></div>
+            <div class="option-label">Lens type <span>Select your lens</span></div>
             <div class="lens-list" id="lensList">
               ${LENS_OPTIONS.map((l) => `
                 <label class="lens-option${l.id === "single" ? " is-active" : ""}">
@@ -604,12 +496,7 @@
                 </label>`).join("")}
             </div>
             <div class="buy-row">
-              <div class="qty">
-                <button data-pdp-minus aria-label="Decrease quantity">${icon("minus")}</button>
-                <span id="pdpQty">1</span>
-                <button data-pdp-plus aria-label="Increase quantity">${icon("plus")}</button>
-              </div>
-              <button class="btn btn-primary" data-pdp-add>Add to bag ${icon("bag")}</button>
+              <button class="btn btn-whatsapp" data-pdp-whatsapp>${icon("whatsapp")} Enquire on WhatsApp</button>
               <button class="wish-btn${wishlist.includes(p.id) ? " is-active" : ""}" data-wish="${p.id}" aria-label="Save ${esc(p.name)}" aria-pressed="${wishlist.includes(p.id)}">${icon("heart")}</button>
             </div>
             <ul class="pdp__delivery">
@@ -647,7 +534,7 @@
       </div>
       <div class="mobile-buy">
         <span class="price" id="mobilePrice">${money(p.price)}</span>
-        <button class="btn btn-primary" data-pdp-add>Add to bag ${icon("bag")}</button>
+        <button class="btn btn-whatsapp" data-pdp-whatsapp>${icon("whatsapp")} Enquire on WhatsApp</button>
       </div>
     `;
     document.body.classList.add("has-mobile-buy");
@@ -703,18 +590,12 @@
     });
 
     document.addEventListener("click", (e) => {
-      if (e.target.closest("[data-pdp-plus]")) {
-        pdpState.qty = Math.min(9, pdpState.qty + 1);
-        const q = $("#pdpQty"); if (q) q.textContent = pdpState.qty;
-      }
-      if (e.target.closest("[data-pdp-minus]")) {
-        pdpState.qty = Math.max(1, pdpState.qty - 1);
-        const q = $("#pdpQty"); if (q) q.textContent = pdpState.qty;
-      }
-      if (e.target.closest("[data-pdp-add]")) {
-        addToCart(p.id, { color: pdpState.color, size: pdpState.size, lens: pdpState.lens, qty: pdpState.qty });
-        toast(`${p.name} added to your bag`);
-        openPanel("#cartDrawer");
+      if (e.target.closest("[data-pdp-whatsapp]")) {
+        const lens = LENS_OPTIONS.find((l) => l.id === pdpState.lens) || LENS_OPTIONS[0];
+        const total = p.price + lensExtra(pdpState.lens);
+        const extra = `Colour: ${pdpState.color}\nSize: ${pdpState.size}\nLens: ${lens.label}\nTotal: ${money(total)}`;
+        window.open(waProductLink(p, extra), "_blank", "noopener,noreferrer");
+        toast("Opening WhatsApp with this frame's details…");
       }
       if (e.target.closest("[data-share]")) {
         const url = location.href;
@@ -955,8 +836,6 @@
   /* ---------------- global events ---------------- */
   function bindGlobal() {
     document.addEventListener("click", (e) => {
-      const openCart = e.target.closest("[data-open-cart]");
-      if (openCart) { e.preventDefault(); openPanel("#cartDrawer"); return; }
       const openWish = e.target.closest("[data-open-wishlist]");
       if (openWish) { e.preventDefault(); openPanel("#wishDrawer"); return; }
       const openSearch = e.target.closest("[data-open-search]");
@@ -968,35 +847,8 @@
       const wish = e.target.closest("[data-wish]");
       if (wish) { e.preventDefault(); toggleWish(wish.dataset.wish); return; }
 
-      const quick = e.target.closest("[data-quick-add]");
-      if (quick) {
-        e.preventDefault();
-        const p = getProduct(quick.dataset.quickAdd);
-        addToCart(quick.dataset.quickAdd);
-        toast(`${p.name} added to your bag`);
-        return;
-      }
-      const wishAdd = e.target.closest("[data-wish-add]");
-      if (wishAdd) {
-        addToCart(wishAdd.dataset.wishAdd);
-        toast(`${getProduct(wishAdd.dataset.wishAdd)?.name} added to your bag`);
-        openPanel("#cartDrawer");
-        return;
-      }
       const wishRemove = e.target.closest("[data-wish-remove]");
       if (wishRemove) { toggleWish(wishRemove.dataset.wishRemove); return; }
-
-      const minus = e.target.closest("[data-cart-minus]");
-      if (minus) { updateQty(minus.dataset.cartMinus, -1); return; }
-      const plus = e.target.closest("[data-cart-plus]");
-      if (plus) { updateQty(plus.dataset.cartPlus, 1); return; }
-      const remove = e.target.closest("[data-cart-remove]");
-      if (remove) { removeLine(remove.dataset.cartRemove); toast("Removed from your bag"); return; }
-
-      if (e.target.closest("[data-checkout]")) {
-        toast("This is a frontend demo — checkout isn't connected");
-        return;
-      }
 
       const subToggle = e.target.closest("[aria-controls='mobileShopSub']");
       if (subToggle) {
@@ -1029,7 +881,6 @@
     renderFaqs();
     renderFitFinder();
     initPDP();
-    renderCart();
     renderWishlist();
     updateCounts();
     syncWishButtons();
