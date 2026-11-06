@@ -82,7 +82,7 @@
           </div>
           <div class="field">
             <label for="contactPhone">Phone <span style="text-transform:none;letter-spacing:0;font-weight:500">(optional)</span></label>
-            <input type="tel" id="contactPhone" name="phone" placeholder="+91 98290 12345" autocomplete="tel">
+            <input type="tel" id="contactPhone" name="phone" placeholder="+91 98285 34548" autocomplete="tel">
           </div>
           <div class="field">
             <label for="contactTopic">How can we help?</label>
@@ -101,14 +101,15 @@
             <span class="error">Please add at least 10 characters</span>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" style="margin-top:1rem">Send message <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></button>
-        <p class="form-note">This demo form validates in the browser only — no data is sent or stored on a server.</p>
+        <button class="btn btn-whatsapp" type="submit" style="margin-top:1rem"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-whatsapp"></use></svg> Send on WhatsApp</button>
+        <p class="form-note">This form opens WhatsApp with your message pre-filled — no data is stored on a server.</p>
       </form>
       <div class="form-success">
         <div class="empty-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg></div>
-        <h3>Message received</h3>
-        <p>Thanks for writing in. We'll get back to you within one working day.</p>
-        <a class="btn btn-outline btn-sm" href="shop.html" style="margin-top:1.2rem">Back to the frames</a>
+        <h3>Your message is ready</h3>
+        <p>WhatsApp should open with your message pre-filled. If it didn't, tap below.</p>
+        <a class="btn btn-whatsapp btn-sm" data-wa-fallback href="https://wa.me/919828534548" target="_blank" rel="noopener" style="margin-top:1.2rem"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-whatsapp"></use></svg> Continue on WhatsApp</a>
+        <a class="btn btn-outline btn-sm" href="shop.html" style="margin-top:.6rem">Back to the frames</a>
       </div>
     </div>
 
@@ -116,8 +117,11 @@
       <div class="contact-card">
         <h3>Reach us directly</h3>
         <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg><a href="mailto:care@mishraoptics.in">care@mishraoptics.in</a></div>
-        <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-phone"></use></svg><a href="tel:+919829012345">+91 98290 12345</a></div>
+        <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-phone"></use></svg><a href="tel:+919828534548">+91 98285 34548</a></div>
+        <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-whatsapp"></use></svg><a href="https://wa.me/919828534548?text=Hello%20Mishra%20Optics%2C%20I%27d%20like%20some%20help%20choosing%20a%20frame." target="_blank" rel="noopener">WhatsApp us</a></div>
+        <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-facebook"></use></svg><a href="https://www.facebook.com/675562649552525/" target="_blank" rel="noopener">Facebook</a></div>
         <div class="contact-line"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-clock"></use></svg><span>Mon–Sat · 10:30am – 8:30pm IST</span></div>
+        <a class="btn btn-whatsapp btn-block" href="https://wa.me/919828534548?text=Hello%20Mishra%20Optics%2C%20I%27d%20like%20some%20help%20choosing%20a%20frame." target="_blank" rel="noopener" style="margin-top:1rem"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-whatsapp"></use></svg> Chat on WhatsApp</a>
       </div>
       <div class="map-card" role="img" aria-label="Stylised map showing the Kota flagship studio">
         <div class="map-pin"><span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-pin"></use></svg></span><strong>Kota flagship</strong></div>
@@ -131,7 +135,7 @@
       <div class="contact-card">
         <h3>Prefer a video fitting?</h3>
         <p>We'll walk you through shapes, sizes and lens options on a 15-minute call. Free, no obligation.</p>
-        <a class="link-arrow" href="mailto:care@mishraoptics.in?subject=Video%20fitting" style="margin-top:1rem">Book a fitting <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a>
+        <a class="link-arrow" href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%27d%20like%20to%20book%20a%20video%20fitting." target="_blank" rel="noopener" style="margin-top:1rem">Book on WhatsApp <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a>
       </div>
     </aside>
   </div>
@@ -143,7 +147,7 @@
           <span class="eyebrow">Good to know</span>
           <h2>Questions, <em>answered</em></h2>
         </div>
-        <a class="link-arrow" href="mailto:care@mishraoptics.in">Still stuck? Email us <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a>
+        <a class="link-arrow" href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%20have%20a%20question." target="_blank" rel="noopener">Still stuck? WhatsApp us <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a>
       </div>
       <div class="faq-list" id="faqList"></div>
     </div>
@@ -160,19 +164,25 @@
         </a>
         <p>Considered eyewear, made in India. Frames for the way you actually live.</p>
         <div class="footer__socials">
-          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-instagram"></use></svg></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-facebook"></use></svg></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-youtube"></use></svg></a>
+          <a href="https://www.facebook.com/675562649552525/" target="_blank" rel="noopener" aria-label="Mishra Optics on Facebook"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-facebook"></use></svg></a>
+          <a href="https://wa.me/919828534548?text=Hello%20Mishra%20Optics%2C%20I%27d%20like%20some%20help%20choosing%20a%20frame." target="_blank" rel="noopener" aria-label="Chat with Mishra Optics on WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-whatsapp"></use></svg></a>
+          <a href="https://maps.google.com/?q=Mishra+Optician+Rangpur+Road+Kota+Rajasthan" target="_blank" rel="noopener" aria-label="Mishra Optics on Google Maps"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-pin"></use></svg></a>
           <a href="mailto:care@mishraoptics.in" aria-label="Email us"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg></a>
         </div>
       </div>
       <div class="footer__col"><h4>Shop</h4><a href="shop.html">All frames</a><a href="shop.html?category=eyeglasses">Eyeglasses</a><a href="shop.html?category=sunglasses">Sunglasses</a><a href="shop.html?sort=newest">New arrivals</a><a href="shop.html?sort=rating">Top rated</a></div>
-      <div class="footer__col"><h4>Help</h4><a href="contact.html">Contact us</a><a href="contact.html">Shipping & returns</a><a href="contact.html">Size & fit guide</a><a href="contact.html">Prescription help</a><a href="contact.html">FAQs</a></div>
-      <div class="footer__col"><h4>Visit us</h4><address>12, Rangbari Road, Near Chambal Garden,<br>Kota, Rajasthan 324005</address><a class="footer__contact" href="tel:+919829012345"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-phone"></use></svg> +91 98290 12345</a><a class="footer__contact" href="mailto:care@mishraoptics.in"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg> care@mishraoptics.in</a><a class="footer__contact" href="contact.html"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-clock"></use></svg> Mon–Sat · 10:30am – 8:30pm</a></div>
+      <div class="footer__col"><h4>Help</h4><a href="contact.html">Contact us</a><a href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%20need%20some%20help." target="_blank" rel="noopener">WhatsApp us</a><a href="contact.html">Shipping & returns</a><a href="contact.html">Size & fit guide</a><a href="contact.html">Prescription help</a><a href="contact.html">FAQs</a></div>
+      <div class="footer__col"><h4>Visit us</h4><address>12, Rangbari Road, Near Chambal Garden,<br>Kota, Rajasthan 324005</address><a class="footer__contact" href="tel:+919828534548"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-phone"></use></svg> +91 98285 34548</a><a class="footer__contact" href="mailto:care@mishraoptics.in"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg> care@mishraoptics.in</a><a class="footer__contact" href="contact.html"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-clock"></use></svg> Mon–Sat · 10:30am – 8:30pm</a></div>
     </div>
+    <a class="footer__credit" href="https://www.kotalabs.in/" target="_blank" rel="noopener" aria-label="Designed and engineered by KotaLabs — visit kotalabs.in">
+      <span class="footer__credit-mark">K<span>L</span></span>
+      <span><strong>Designed &amp; engineered by KotaLabs</strong><small>Frontend studio · Kota, Rajasthan</small></span>
+      <span class="footer__credit-link">Explore KotaLabs <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"></use></svg></span>
+    </a>
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> Mishra Optics. All rights reserved.</span>
       <div class="footer__pay"><span>UPI</span><span>VISA</span><span>MASTERCARD</span><span>RuPay</span><span>COD</span></div>
+      <span>Designed by <a href="https://www.kotalabs.in/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">KotaLabs</a></span>
       <span>Made in India · Kota, Rajasthan</span>
     </div>
   </div>

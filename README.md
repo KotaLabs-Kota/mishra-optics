@@ -12,10 +12,10 @@ wishlist and form state live in the browser (`localStorage`).
 | `shop.html` | Full catalogue with category / shape / colour / price filters, sorting, live counts, empty state and URL-synced filters |
 | `product.html` | Product detail with image gallery, colour and size options, lens pricing, quantity, accordions, reviews and related frames |
 | `about.html` | Brand story, stats, values, studio timeline and store locations |
-| `contact.html` | Validated contact form, studio details, stylised map and FAQ accordion |
+| `contact.html` | Validated contact form that hands off to WhatsApp, studio details, stylised map and FAQ accordion |
 
 Global UI: sticky header with mega-menu, rotating announcement bar, search overlay, cart drawer,
-wishlist drawer, mobile menu, toast notifications and a persistent cart count.
+wishlist drawer, mobile menu, WhatsApp handoff, toast notifications and a persistent cart count.
 
 ## Frontend patterns borrowed from well-known optics sites
 
@@ -44,8 +44,16 @@ No environment variables, API keys or services are required.
 
 ## Notes
 
-- **Checkout, contact and newsletter are demo-only.** They validate in the browser and show a
-  success state; no data is sent or stored on a server.
+- **Checkout and newsletter are demo-only.** They validate in the browser and show a success
+  state; no data is sent or stored on a server.
+- **The contact form hands off to WhatsApp.** On submit it validates the fields, builds a pre-filled
+  message and opens `wa.me` in a new tab (with a fallback link in the success state). No backend,
+  database or form service is involved. The number is set in `BUSINESS` in `js/data.js`.
+- **Public social/contact links:** Facebook (`facebook.com/675562649552525`) and WhatsApp
+  (`wa.me/919828534548`) are wired from the public "Mishra Optician" Kota listing. Update the
+  `BUSINESS` object and the static footer links if the business details change.
+- **Footer credit:** "Designed & engineered by KotaLabs" with a link to `kotalabs.in`, plus a
+  "Designed by KotaLabs" line in the footer bottom bar.
 - Cart and wishlist persist in `localStorage` under `mo_cart` and `mo_wish`.
 - Fonts (Fraunces + Manrope) are self-hosted in `assets/fonts`, so the site has no external
   runtime dependencies.

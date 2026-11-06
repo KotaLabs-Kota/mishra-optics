@@ -299,7 +299,7 @@ const STORES = [
     label: "Flagship studio",
     address: "12, Rangbari Road, Near Chambal Garden, Kota, Rajasthan 324005",
     hours: "Mon–Sat · 10:30am – 8:30pm",
-    phone: "+91 98290 12345"
+    phone: "+91 98285 34548"
   },
   {
     city: "Jaipur",
@@ -338,3 +338,17 @@ const ANNOUNCEMENTS = [
   "30-day no-questions returns · 1-year frame warranty",
   "New: The Monsoon Edit — now in store and online"
 ];
+
+
+/* Public business details used by the frontend-only contact flow.
+   Source: public "Mishra Optician" listing, Kota (Rajasthan).
+   Update these values if the business details change. */
+const BUSINESS = {
+  name: "Mishra Optics",
+  whatsapp: "919828534548",
+  phoneDisplay: "+91 98285 34548",
+  facebook: "https://www.facebook.com/675562649552525/",
+  maps: "https://maps.google.com/?q=Mishra+Optician+Rangpur+Road+Kota+Rajasthan",
+  email: "care@mishraoptics.in"
+};
+const WHATSAPP_NUMBER = BUSINESS.whatsapp;

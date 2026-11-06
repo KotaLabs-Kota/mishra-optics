@@ -84,7 +84,8 @@
         </div>
         <div class="drawer__foot drawer__foot--menu">
           <a href="mailto:care@mishraoptics.in">${icon("mail")} care@mishraoptics.in</a>
-          <a href="tel:+919829012345">${icon("phone")} +91 98290 12345</a>
+          <a href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%27d%20like%20some%20help." target="_blank" rel="noopener">${icon("whatsapp")} WhatsApp us</a>
+          <a href="tel:+919828534548">${icon("phone")} +91 98285 34548</a>
           <p style="font-size:.7rem;color:var(--muted);margin-top:.4rem">Kota · Jaipur · Pan-India delivery</p>
         </div>
       </aside>
@@ -879,14 +880,32 @@
       const data = new FormData(form);
       const name = String(data.get("name") || "").trim();
       const email = String(data.get("email") || "").trim();
+      const phone = String(data.get("phone") || "").trim();
+      const topic = String(data.get("topic") || "General enquiry").trim();
       const message = String(data.get("message") || "").trim();
       let ok = true;
       if (name.length < 2) { setError("name", true); ok = false; } else setError("name", false);
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { setError("email", true); ok = false; } else setError("email", false);
       if (message.length < 10) { setError("message", true); ok = false; } else setError("message", false);
       if (!ok) { toast("Please check the highlighted fields"); return; }
+
+      /* Frontend-only handoff: open WhatsApp with the message pre-filled.
+         No backend, database or third-party form service is involved. */
+      const composed = [
+        `Hello ${BUSINESS.name}, I'm ${name}.`,
+        "",
+        `Topic: ${topic}`,
+        `Email: ${email}`,
+        `Phone: ${phone || "Not provided"}`,
+        "",
+        message
+      ].join("\n");
+      const waUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(composed)}`;
+      const fallback = form.closest(".form-card")?.querySelector("[data-wa-fallback]");
+      if (fallback) fallback.href = waUrl;
       form.closest(".form-card")?.classList.add("is-sent");
-      toast("Message sent — we'll reply within one working day");
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+      toast("Opening WhatsApp with your message…");
     });
     form.addEventListener("input", (e) => {
       const field = e.target.closest(".field");
