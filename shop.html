@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop all frames — Mishra Optics</title>
+<meta name="description" content="Browse handcrafted eyeglasses and sunglasses from Mishra Optics. Filter by shape, colour and price. Free shipping above ₹1,999 and 30-day returns.">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231d3a2e'/%3E%3Cpath d='M8 20s4.5-6 12-6 12 6 12 6-4.5 6-12 6S8 20 8 20Z' fill='none' stroke='%23f7f2e8' stroke-width='1.6'/%3E%3Ccircle cx='20' cy='20' r='3.4' fill='%23b65f3c'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="announce">
+  <div class="announce__inner">
+    <div class="announce__item is-active"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-truck"></use></svg> Complimentary shipping on orders above ₹1,999</div>
+    <div class="announce__item"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-refresh"></use></svg> 30-day no-questions returns · 1-year frame warranty</div>
+    <div class="announce__item"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-sparkle"></use></svg> New: The Monsoon Edit — now in store and online</div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html" aria-label="Mishra Optics — home">
+      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.4" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M7.5 20S12 13.4 20 13.4 32.5 20 32.5 20 28 26.6 20 26.6 7.5 20 7.5 20Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <circle cx="20" cy="20" r="3.6" fill="currentColor"/>
+        <path d="M20 1.6v2.6M20 35.8v2.6M1.6 20h2.6M35.8 20h2.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text"><span class="brand__name">MISHRA</span><span class="brand__sub">OPTICS</span></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="has-mega">
+        <button class="nav__link" type="button" aria-haspopup="true">Shop <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-chevron-down"></use></svg></button>
+        <div class="mega">
+          <div><h4>Shop</h4><a href="shop.html">All frames</a><a href="shop.html?category=eyeglasses">Eyeglasses</a><a href="shop.html?category=sunglasses">Sunglasses</a><a href="shop.html?sort=newest">New arrivals</a><a href="shop.html?sort=rating">Top rated</a></div>
+          <div><h4>By shape</h4><a href="shop.html?shape=Round">Round</a><a href="shop.html?shape=Rectangle">Rectangle</a><a href="shop.html?shape=Aviator">Aviator</a><a href="shop.html?shape=Cat-eye">Cat-eye</a><a href="shop.html?shape=Square">Square</a></div>
+          <a class="mega__feature" href="shop.html?sort=newest"><img src="images/product-jaipur.jpg" alt="The Jaipur sunglasses" loading="lazy"><span>The Monsoon Edit</span><strong>New shapes for golden hour</strong></a>
+        </div>
+      </div>
+      <a class="nav__link" href="shop.html?category=eyeglasses">Eyeglasses</a>
+      <a class="nav__link" href="shop.html?category=sunglasses">Sunglasses</a>
+      <a class="nav__link" href="about.html">Our story</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" type="button" data-open-search aria-label="Search frames"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-search"></use></svg></button>
+      <a class="icon-btn icon-btn--account" href="contact.html" aria-label="Help and contact"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-user"></use></svg></a>
+      <button class="icon-btn" type="button" data-open-wishlist aria-label="Saved frames"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-heart"></use></svg><span class="icon-btn__count" data-wish-count hidden>0</span></button>
+      <button class="icon-btn" type="button" data-open-cart aria-label="Shopping bag"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-bag"></use></svg><span class="icon-btn__count" data-cart-count hidden>0</span></button>
+      <button class="icon-btn burger" type="button" data-open-menu aria-label="Open menu"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-menu"></use></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-chevron-right"></use></svg> <span>All frames</span></nav>
+      <h1>Find your <em>frame.</em></h1>
+      <p>Eight considered silhouettes, hand-polished in Kota. Filter by shape, colour or price — every pair ships with a hard case, a microfibre pouch and 30 days to change your mind.</p>
+    </div>
+  </section>
+
+  <div class="container shop-layout">
+    <aside class="filters" id="filtersPanel" aria-label="Filter frames">
+      <div class="filters__head">
+        <h2>Filter</h2>
+        <button class="filters__clear" type="button" data-clear-filters>Clear all</button>
+      </div>
+      <div class="filter-group"><h3>Category</h3><div id="filterCategory"></div></div>
+      <div class="filter-group"><h3>Shape</h3><div id="filterShape"></div></div>
+      <div class="filter-group"><h3>Colour</h3><div id="filterColor"></div></div>
+      <div class="filter-group">
+        <h3>Max price</h3>
+        <input class="price-range" type="range" id="priceRange" min="1000" max="3500" step="100" value="3500" aria-label="Maximum price">
+        <div class="price-labels"><span>₹1,000</span><span id="priceOut">₹3,500</span></div>
+      </div>
+      <div class="shop-note"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-truck"></use></svg> Free shipping on orders above ₹1,999. Not sure about fit? Book a free video fitting.</div>
+      <button class="btn btn-primary btn-block filter-apply" type="button" data-close-filters>Show results</button>
+    </aside>
+
+    <div>
+      <div class="shop-toolbar">
+        <span class="shop-toolbar__count" id="shopCount">Loading frames…</span>
+        <div class="shop-toolbar__right">
+          <button class="btn btn-outline btn-sm filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filtersPanel"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-filter"></use></svg> Filters</button>
+          <label class="sr-only" for="sortSelect">Sort frames</label>
+          <select class="sort-select" id="sortSelect">
+            <option value="featured">Sort: Featured</option>
+            <option value="newest">Newest first</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+      </div>
+      <div class="product-grid shop-grid" id="shopGrid"></div>
+      <div class="shop-note"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-shield"></use></svg> Every frame includes a 1-year warranty, free adjustments for life in our Kota and Jaipur studios, and a 30-day return window.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Mishra Optics home">
+          <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.4" stroke="currentColor" stroke-width="1.2"/><path d="M7.5 20S12 13.4 20 13.4 32.5 20 32.5 20 28 26.6 20 26.6 7.5 20 7.5 20Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="20" cy="20" r="3.6" fill="currentColor"/></svg>
+          <span class="brand__text"><span class="brand__name">MISHRA</span><span class="brand__sub">OPTICS</span></span>
+        </a>
+        <p>Considered eyewear, made in India. Frames for the way you actually live.</p>
+        <div class="footer__socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-instagram"></use></svg></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-facebook"></use></svg></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-youtube"></use></svg></a>
+          <a href="mailto:care@mishraoptics.in" aria-label="Email us"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Shop</h4><a href="shop.html">All frames</a><a href="shop.html?category=eyeglasses">Eyeglasses</a><a href="shop.html?category=sunglasses">Sunglasses</a><a href="shop.html?sort=newest">New arrivals</a><a href="shop.html?sort=rating">Top rated</a></div>
+      <div class="footer__col"><h4>Help</h4><a href="contact.html">Contact us</a><a href="contact.html">Shipping & returns</a><a href="contact.html">Size & fit guide</a><a href="contact.html">Prescription help</a><a href="contact.html">FAQs</a></div>
+      <div class="footer__col"><h4>Visit us</h4><address>12, Rangbari Road, Near Chambal Garden,<br>Kota, Rajasthan 324005</address><a class="footer__contact" href="tel:+919829012345"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-phone"></use></svg> +91 98290 12345</a><a class="footer__contact" href="mailto:care@mishraoptics.in"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-mail"></use></svg> care@mishraoptics.in</a><a class="footer__contact" href="contact.html"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-clock"></use></svg> Mon–Sat · 10:30am – 8:30pm</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Mishra Optics. All rights reserved.</span>
+      <div class="footer__pay"><span>UPI</span><span>VISA</span><span>MASTERCARD</span><span>RuPay</span><span>COD</span></div>
+      <span>Made in India · Kota, Rajasthan</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
