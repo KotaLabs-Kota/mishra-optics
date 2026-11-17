@@ -82,7 +82,7 @@
           <a href="mailto:care@mishraoptics.in">${icon("mail")} care@mishraoptics.in</a>
           <a href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%27d%20like%20some%20help." target="_blank" rel="noopener">${icon("whatsapp")} WhatsApp us</a>
           <a href="tel:+919828534548">${icon("phone")} +91 98285 34548</a>
-          <p style="font-size:.7rem;color:var(--muted);margin-top:.4rem">Kota · Jaipur · Pan-India delivery</p>
+          <p style="font-size:.7rem;color:var(--muted);margin-top:.4rem">Three studios in Kota · Pan-India delivery</p>
         </div>
       </aside>
 
@@ -707,6 +707,11 @@
         <div class="post-card__meta">${esc(post.read)}</div>
       </a>`).join("");
   }
+  /* "View on Google Maps" opens the shop's listing page; "Get directions"
+     opens a route to its exact pin (coords) rather than a text search. */
+  const dirUrl = (s) =>
+    `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.coords || s.address)}`;
+
   function renderStores() {
     const el = $("#storesGrid");
     if (!el) return;
@@ -714,12 +719,16 @@
       <div class="store-card">
         <span>${esc(s.label)}</span>
         <h3>${esc(s.city)}</h3>
+        <div class="store-rating">${icon("star")} <strong>${esc(s.rating)}</strong> · ${esc(s.reviews)} Google reviews</div>
         <p>${esc(s.address)}</p>
         <div class="store-meta">
           <span>${icon("clock")} ${esc(s.hours)}</span>
-          <span>${icon("phone")} ${esc(s.phone)}</span>
+          <a href="tel:${s.phone.replace(/[^\d+]/g, "")}">${icon("phone")} ${esc(s.phone)}</a>
         </div>
-        <a class="link-arrow" href="https://maps.google.com/?q=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Get directions ${icon("arrow-up-right")}</a>
+        <div class="store-links">
+          <a class="link-arrow" href="${s.listing}" target="_blank" rel="noopener">${icon("pin")} View on Google Maps ${icon("arrow-up-right")}</a>
+          <a class="link-arrow" href="${dirUrl(s)}" target="_blank" rel="noopener">${icon("arrow-right")} Get directions</a>
+        </div>
       </div>`).join("");
   }
   function renderFaqs() {

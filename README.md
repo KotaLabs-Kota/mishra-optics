@@ -56,9 +56,27 @@ No environment variables, API keys or services are required.
 - **Public social/contact links:** Facebook (`facebook.com/675562649552525`) and WhatsApp
   (`wa.me/919828534548`) are wired from the public "Mishra Optician" Kota listing. Update the
   `BUSINESS` object and the static footer links if the business details change.
-- **Footer brand card:** "Designed & engineered by KotaLabs" with a link to `kotalabs.in`, the four
-  KotaLabs plans (**Free, Basic, Business, Full end-to-end**) and a highlighted free-plan CTA, plus
-  a "Designed by KotaLabs" line in the footer bottom bar. The same card appears on every page.
+- **Stores — all three are in Kota** (there is no Jaipur branch). `STORES` in `js/data.js` drives
+  the `about.html` grid; the `contact.html` branch list and the footer address block repeat the
+  details, so update them alongside `STORES`. Verified against each Google Maps listing:
+  - **Rangpur Road (flagship)** — Arjun Gali, Rangpur Road, Railway Station Area, Kota 324002 ·
+    9:00am–10:00pm · +91 98285 34548 · 4.9★ (3,992)
+  - **Talwandi** — B-309, Sector-B, Talwandi (opposite Rajasthan Juice), Kota 324005 ·
+    10:00am–9:30pm, Sun till 8:30pm · +91 86964 54558 · 5.0★ (401)
+  - **Borkheda** — Shop no. 6–7, Shighvi Complex, Deoli Arab Road, near the petrol pump,
+    Sahara Enclave, Borkhera, Kota 324002 · 10:00am–9:30pm · +91 86964 54548 · 5.0★ (831)
+
+  Note the phone numbers differ per branch, and Borkheda shares the flagship's `324002` PIN.
+  Each entry carries `listing` (the shop's `maps.app.goo.gl` page — used by **View on Google
+  Maps**) and `coords` (its exact pin — used by **Get directions**); keep both, they are not
+  interchangeable: a `maps/dir/` URL resolves to a route, not the business listing.
+
+  Verify against the Google Maps listings and the `@mishraoptician` Instagram page before changing them.
+- **Footer brand credit bar:** a single compact dark bar — KotaLabs monogram, a "Designed &
+  engineered by" eyebrow with a live status dot, the `KotaLabs` wordmark with the "Next-gen 3D web,
+  AR experiences & digital flagships" tagline, and a cyan **Explore KotaLabs** CTA to `kotalabs.in`.
+  The bottom bar mirrors it with the copyright line, a "Pure fast client experience · No sign-in
+  required" note and a "Crafted by KotaLabs ↗" credit. The same bar appears on every page.
 - The wishlist persists in `localStorage` under `mo_wish`.
 - Fonts (Fraunces + Manrope) are self-hosted in `assets/fonts`, so the site has no external
   runtime dependencies.

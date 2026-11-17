@@ -243,18 +243,37 @@ const JOURNAL = [
 
 const STORES = [
   {
-    city: "Kota",
-    label: "Flagship studio",
-    address: "12, Rangbari Road, Near Chambal Garden, Kota, Rajasthan 324005",
-    hours: "Mon–Sat · 10:30am – 8:30pm",
-    phone: "+91 98285 34548"
+    city: "Rangpur Road",
+    label: "Flagship · Station Road",
+    address: "Arjun Gali, Rangpur Road, Railway Station Area, Kota, Rajasthan 324002",
+    hours: "Mon–Sun · 9:00am – 10:00pm",
+    phone: "+91 98285 34548",
+    rating: "4.9",
+    reviews: "3,992",
+    listing: "https://maps.app.goo.gl/d8M7fzZo2Wg4mpn37",
+    coords: "25.2238216,75.8769356"
   },
   {
-    city: "Jaipur",
-    label: "Pink city studio",
-    address: "C-18, Prithviraj Road, C Scheme, Jaipur, Rajasthan 302001",
-    hours: "Mon–Sun · 11:00am – 8:00pm",
-    phone: "+91 98290 12346"
+    city: "Talwandi",
+    label: "Studio · Talwandi",
+    address: "B-309, Sector-B, Talwandi (opposite Rajasthan Juice), Kota, Rajasthan 324005",
+    hours: "Mon–Sat · 10:00am – 9:30pm · Sun till 8:30pm",
+    phone: "+91 86964 54558",
+    rating: "5.0",
+    reviews: "401",
+    listing: "https://maps.app.goo.gl/nyt86nwMecyeWFk59",
+    coords: "25.1493474,75.8404001"
+  },
+  {
+    city: "Borkheda",
+    label: "Studio · Borkheda",
+    address: "Shop no. 6–7, Shighvi Complex, Deoli Arab Road, near the petrol pump, Sahara Enclave, Borkhera, Kota, Rajasthan 324002",
+    hours: "Mon–Sun · 10:00am – 9:30pm",
+    phone: "+91 86964 54548",
+    rating: "5.0",
+    reviews: "831",
+    listing: "https://maps.app.goo.gl/jxotWdmWk32pK3tFA",
+    coords: "25.1790978,75.8839447"
   }
 ];
 
