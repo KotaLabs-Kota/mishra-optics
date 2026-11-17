@@ -56,6 +56,15 @@ No environment variables, API keys or services are required.
 - **Public social/contact links:** Facebook (`facebook.com/675562649552525`) and WhatsApp
   (`wa.me/919828534548`) are wired from the public "Mishra Optician" Kota listing. Update the
   `BUSINESS` object and the static footer links if the business details change.
+- **Stores — all three are in Kota** (there is no Jaipur branch). `STORES` in `js/data.js` drives
+  the `about.html` grid; the footer address block and the `contact.html` studio card are static and
+  repeat the flagship details, so update them alongside `STORES`:
+  - **Branch 01 · flagship** — Arjun Gali, Rangpur Road, Railway Station Area, Dadwara Colony, Kota 324002
+  - **Branch 02** — New Jawahar Nagar, Talwandi, Kota 324005
+  - **Branch 03** — Deoli Arab Road, near the petrol pump, Borkheda, Kota 324001
+
+  All three share the same hours (10:00am – 9:00pm) and phone number. Verify against the Google
+  Business listings and the `@mishraoptician` Instagram page before changing them.
 - **Footer brand credit bar:** a single compact dark bar — KotaLabs monogram, a "Designed &
   engineered by" eyebrow with a live status dot, the `KotaLabs` wordmark with the "Next-gen 3D web,
   AR experiences & digital flagships" tagline, and a cyan **Explore KotaLabs** CTA to `kotalabs.in`.

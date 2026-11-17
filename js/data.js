@@ -243,18 +243,25 @@ const JOURNAL = [
 
 const STORES = [
   {
-    city: "Kota",
-    label: "Flagship studio",
-    address: "12, Rangbari Road, Near Chambal Garden, Kota, Rajasthan 324005",
-    hours: "Mon–Sat · 10:30am – 8:30pm",
+    city: "Rangpur Road",
+    label: "Flagship · Branch 01",
+    address: "Arjun Gali, Rangpur Road, Railway Station Area, Dadwara Colony, Kota, Rajasthan 324002",
+    hours: "Mon–Sun · 10:00am – 9:00pm",
     phone: "+91 98285 34548"
   },
   {
-    city: "Jaipur",
-    label: "Pink city studio",
-    address: "C-18, Prithviraj Road, C Scheme, Jaipur, Rajasthan 302001",
-    hours: "Mon–Sun · 11:00am – 8:00pm",
-    phone: "+91 98290 12346"
+    city: "Talwandi",
+    label: "Studio · Branch 02",
+    address: "New Jawahar Nagar, Talwandi, Kota, Rajasthan 324005",
+    hours: "Mon–Sun · 10:00am – 9:00pm",
+    phone: "+91 98285 34548"
+  },
+  {
+    city: "Borkheda",
+    label: "Studio · Branch 03",
+    address: "Deoli Arab Road, Near Petrol Pump, Borkheda, Kota, Rajasthan 324001",
+    hours: "Mon–Sun · 10:00am – 9:00pm",
+    phone: "+91 98285 34548"
   }
 ];
 

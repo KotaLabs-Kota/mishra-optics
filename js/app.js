@@ -82,7 +82,7 @@
           <a href="mailto:care@mishraoptics.in">${icon("mail")} care@mishraoptics.in</a>
           <a href="https://wa.me/919828534548?text=Hi%20Mishra%20Optics%2C%20I%27d%20like%20some%20help." target="_blank" rel="noopener">${icon("whatsapp")} WhatsApp us</a>
           <a href="tel:+919828534548">${icon("phone")} +91 98285 34548</a>
-          <p style="font-size:.7rem;color:var(--muted);margin-top:.4rem">Kota · Jaipur · Pan-India delivery</p>
+          <p style="font-size:.7rem;color:var(--muted);margin-top:.4rem">Three studios in Kota · Pan-India delivery</p>
         </div>
       </aside>
 
