@@ -714,12 +714,13 @@
       <div class="store-card">
         <span>${esc(s.label)}</span>
         <h3>${esc(s.city)}</h3>
+        <div class="store-rating">${icon("star")} <strong>${esc(s.rating)}</strong> · ${esc(s.reviews)} Google reviews</div>
         <p>${esc(s.address)}</p>
         <div class="store-meta">
           <span>${icon("clock")} ${esc(s.hours)}</span>
-          <span>${icon("phone")} ${esc(s.phone)}</span>
+          <a href="tel:${s.phone.replace(/[^\d+]/g, "")}">${icon("phone")} ${esc(s.phone)}</a>
         </div>
-        <a class="link-arrow" href="https://maps.google.com/?q=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Get directions ${icon("arrow-up-right")}</a>
+        <a class="link-arrow" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Get directions ${icon("arrow-up-right")}</a>
       </div>`).join("");
   }
   function renderFaqs() {

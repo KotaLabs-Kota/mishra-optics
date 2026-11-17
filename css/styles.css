@@ -996,6 +996,7 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
 }
 .footer__col a:hover { color: var(--paper-2); }
 .footer__col address { font-style: normal; font-size: 0.82rem; color: #767162; line-height: 1.7; }
+.footer__more { display: block; margin-top: 0.35rem; font-size: 0.74rem; color: #6a6558; }
 .footer__col .footer__contact { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.55rem; }
 .footer__col .footer__contact .icon { width: 13px; height: 13px; color: var(--clay-soft); }
 .footer__bottom {
@@ -1376,8 +1377,13 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
 .store-card > span { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); font-weight: 800; }
 .store-card p { color: var(--muted); font-size: 0.84rem; line-height: 1.7; margin-top: 0.7rem; }
 .store-card .store-meta { display: grid; gap: 0.35rem; margin-top: 0.9rem; }
-.store-card .store-meta span { display: flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--muted); }
-.store-card .store-meta .icon { width: 14px; height: 14px; color: var(--forest); }
+.store-card .store-meta span,
+.store-card .store-meta a { display: flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+.store-card .store-meta a:hover { color: var(--clay); }
+.store-card .store-rating { display: flex; align-items: center; gap: 0.28rem; font-size: 0.72rem; color: var(--muted); margin-top: 0.45rem; }
+.store-card .store-rating .icon { width: 12px; height: 12px; color: var(--gold); }
+.store-card .store-rating strong { color: var(--ink); font-weight: 800; }
+.store-card .store-meta .icon { width: 14px; height: 14px; color: var(--forest); flex: none; }
 .store-card .link-arrow { margin-top: 1.1rem; }
 
 /* ---------- contact ---------- */
@@ -1414,6 +1420,13 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
 .form-card.is-sent form { display: none; }
 .form-card.is-sent .form-success { display: block; }
 .contact-aside { display: grid; gap: 1rem; }
+.branch-list { display: grid; gap: 1.2rem; margin-top: 0.4rem; }
+.branch { padding-top: 1.05rem; border-top: 1px solid var(--line-soft); }
+.branch:first-child { padding-top: 0; border-top: 0; }
+.branch > strong { display: block; font-size: 0.86rem; font-weight: 800; color: var(--ink); }
+.branch > strong em { font-style: normal; font-weight: 600; color: var(--clay); }
+.branch p { margin-top: 0.35rem; }
+.branch .link-arrow { margin-top: 0.6rem; }
 .contact-card { background: var(--paper-2); border: 1px solid var(--line-soft); border-radius: var(--r-lg); padding: 1.4rem; }
 .contact-card h3 { font-size: 1.15rem; }
 .contact-card p, .contact-card a { color: var(--muted); font-size: 0.84rem; line-height: 1.7; }
