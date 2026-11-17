@@ -896,7 +896,7 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
   border: 1px solid rgba(56, 189, 248, 0.55);
   display: flex; align-items: center; justify-content: center; gap: 0.015em;
   font-family: var(--sans);
-  font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+  font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
   box-shadow:
     0 0 0 1px rgba(56, 189, 248, 0.1),
     0 8px 20px -10px rgba(0, 188, 255, 0.55),
