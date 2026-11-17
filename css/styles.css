@@ -890,17 +890,21 @@ h1 em, h2 em { font-style: italic; color: var(--clay); }
 }
 .kotalabs-mark {
   position: relative;
-  width: 48px; height: 48px; flex: none;
-  border-radius: 12px;
-  background: linear-gradient(150deg, rgba(56, 189, 248, 0.28), rgba(37, 99, 235, 0.3));
-  border: 1px solid rgba(125, 211, 252, 0.35);
-  display: grid; place-items: center;
+  width: 52px; height: 52px; flex: none;
+  border-radius: 15px;
+  background: linear-gradient(142deg, #14456e 0%, #0e3159 46%, #17295c 100%);
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  display: flex; align-items: center; justify-content: center; gap: 0.015em;
   font-family: var(--sans);
-  font-size: 0.92rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
-  color: #f8fafc;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.1),
+    0 8px 20px -10px rgba(0, 188, 255, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
-.kotalabs-mark span { color: #38bdf8; }
+.kotalabs-mark b { font-weight: 800; color: #ffffff; }
+.kotalabs-mark i { font-style: normal; font-weight: 800; color: #00bcff; }
+
 .kotalabs-card__body { position: relative; min-width: 0; }
 .kotalabs-card__eyebrow {
   display: flex; align-items: center; gap: 0.4rem;
