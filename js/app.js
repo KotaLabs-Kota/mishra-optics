@@ -707,6 +707,11 @@
         <div class="post-card__meta">${esc(post.read)}</div>
       </a>`).join("");
   }
+  /* "View on Google Maps" opens the shop's listing page; "Get directions"
+     opens a route to its exact pin (coords) rather than a text search. */
+  const dirUrl = (s) =>
+    `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.coords || s.address)}`;
+
   function renderStores() {
     const el = $("#storesGrid");
     if (!el) return;
@@ -720,7 +725,10 @@
           <span>${icon("clock")} ${esc(s.hours)}</span>
           <a href="tel:${s.phone.replace(/[^\d+]/g, "")}">${icon("phone")} ${esc(s.phone)}</a>
         </div>
-        <a class="link-arrow" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Get directions ${icon("arrow-up-right")}</a>
+        <div class="store-links">
+          <a class="link-arrow" href="${s.listing}" target="_blank" rel="noopener">${icon("pin")} View on Google Maps ${icon("arrow-up-right")}</a>
+          <a class="link-arrow" href="${dirUrl(s)}" target="_blank" rel="noopener">${icon("arrow-right")} Get directions</a>
+        </div>
       </div>`).join("");
   }
   function renderFaqs() {

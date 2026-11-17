@@ -67,6 +67,9 @@ No environment variables, API keys or services are required.
     Sahara Enclave, Borkhera, Kota 324002 · 10:00am–9:30pm · +91 86964 54548 · 5.0★ (831)
 
   Note the phone numbers differ per branch, and Borkheda shares the flagship's `324002` PIN.
+  Each entry carries `listing` (the shop's `maps.app.goo.gl` page — used by **View on Google
+  Maps**) and `coords` (its exact pin — used by **Get directions**); keep both, they are not
+  interchangeable: a `maps/dir/` URL resolves to a route, not the business listing.
 
   Verify against the Google Maps listings and the `@mishraoptician` Instagram page before changing them.
 - **Footer brand credit bar:** a single compact dark bar — KotaLabs monogram, a "Designed &

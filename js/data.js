@@ -250,7 +250,8 @@ const STORES = [
     phone: "+91 98285 34548",
     rating: "4.9",
     reviews: "3,992",
-    map: "https://maps.app.goo.gl/d8M7fzZo2Wg4mpn37"
+    listing: "https://maps.app.goo.gl/d8M7fzZo2Wg4mpn37",
+    coords: "25.2238216,75.8769356"
   },
   {
     city: "Talwandi",
@@ -260,7 +261,8 @@ const STORES = [
     phone: "+91 86964 54558",
     rating: "5.0",
     reviews: "401",
-    map: "https://maps.app.goo.gl/nyt86nwMecyeWFk59"
+    listing: "https://maps.app.goo.gl/nyt86nwMecyeWFk59",
+    coords: "25.1493474,75.8404001"
   },
   {
     city: "Borkheda",
@@ -270,7 +272,8 @@ const STORES = [
     phone: "+91 86964 54548",
     rating: "5.0",
     reviews: "831",
-    map: "https://maps.app.goo.gl/jxotWdmWk32pK3tFA"
+    listing: "https://maps.app.goo.gl/jxotWdmWk32pK3tFA",
+    coords: "25.1790978,75.8839447"
   }
 ];
 
